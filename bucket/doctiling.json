@@ -1,0 +1,29 @@
+{
+  "$comment": "Scoop manifest for the doctiling bucket. Publish: copy into the doctiling/scoop-bucket repo as bucket/doctiling.json. checkver/autoupdate keep url+hash current per release.",
+  "version": "0.1.0",
+  "description": "Editorial studio for documents and the AI agents that read them — self-hosted",
+  "homepage": "https://doctiling.app",
+  "license": "Proprietary",
+  "depends": ["nodejs-lts"],
+  "url": "https://github.com/doctiling/releases/releases/download/v0.1.0/doctiling-standalone.tar.gz",
+  "hash": "b3e8b0e7b1bd1d9ac64fa433d33888a208d5e820463f33c6f4fda2ab6f2116cb",
+  "post_install": [
+    "& powershell -ExecutionPolicy Bypass -File \"$dir\\scripts\\self-host\\scoop-setup.ps1\" -AppDir \"$dir\""
+  ],
+  "uninstaller": {
+    "script": [
+      "Unregister-ScheduledTask -TaskName 'Doctiling' -Confirm:$false -ErrorAction SilentlyContinue"
+    ]
+  },
+  "checkver": {
+    "github": "https://github.com/doctiling/releases"
+  },
+  "autoupdate": {
+    "url": "https://github.com/doctiling/releases/releases/download/v$version/doctiling-standalone.tar.gz"
+  },
+  "notes": [
+    "First run generated %USERPROFILE%\\.doctiling\\.env with every secret (local AI defaults).",
+    "The 'Doctiling' logon task starts the app at http://127.0.0.1:3000 — install it as an app from your browser.",
+    "Local AI needs LM Studio or Ollama serving http://127.0.0.1:1234/v1 (edit LLM_BASE_URL in .env for a different port)."
+  ]
+}
