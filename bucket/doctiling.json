@@ -1,14 +1,14 @@
 {
   "$comment": "Scoop manifest for the doctiling bucket. Publish: copy into the doctiling/scoop-bucket repo as bucket/doctiling.json. checkver/autoupdate keep url+hash current per release.",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "description": "Editorial studio for documents and the AI agents that read them — self-hosted",
   "homepage": "https://doctiling.app",
   "license": "Proprietary",
   "depends": [
     "nodejs-lts"
   ],
-  "url": "https://github.com/doctiling/releases/releases/download/v0.19.1/doctiling-standalone.tar.gz",
-  "hash": "624530d1c82c50eb98ee30e5bf458a2dc68c35fc10a84c66603d354b91e305c8",
+  "url": "https://github.com/doctiling/releases/releases/download/v0.19.2/doctiling-standalone.tar.gz",
+  "hash": "952fa4aa4859c0b3d09b5fe37e545de2f6726ea1a407f53c323a4e5aeb46a87c",
   "post_install": [
     "& powershell -ExecutionPolicy Bypass -File \"$dir\\scripts\\self-host\\scoop-setup.ps1\" -AppDir \"$dir\""
   ],
